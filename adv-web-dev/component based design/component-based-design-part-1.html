@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Component Based Design - Part 1</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" /> 
+	
+	<!-- I"M NOT ALLOWING INDEXING AT THIS TIME!!! MAYBE SOON -->
+	<meta name="robots" content="noindex,nofollow">
+	
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+	<script src="/js/main.js"></script>
+	<link rel="stylesheet" type="text/css" href="/prism/prism.css">
+	<link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+	<script src="/prism/prism.js"></script>
+
+</head>
+<body>
+	<header>
+		<div id="menu-button">&#9776;</div>
+		<h1>My New Site!</h1>
+		<div class="search">
+			<form action="/search-results">
+				<input type="text" name="q" placeholder="Search...">
+				<button>GO</button>
+			</form>
+		</div>
+	</header>
+	<div id="menu">
+		<nav>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+		</nav>
+	</div>
+	<div id="content">
+		<main>
+
+
+
+<h1>Component Based Design - Part 1</h1>
+<!--<p>Now that you know the fundamentals of programming, it&#39;s time to think aobut how to design and build complex applications with component based design</p>-->
+<p>Before starting this activity, <a href="https://www.droptica.com/blog/component-based-design/">read this article</a>.</p>
+<p>Large and complex projects require you to take a big problem and break it down
+into a series of smaller problems.</p>
+<p>Assume that you are tasked with building a car, that's a very big problem!
+Here are some of the smaller problems that you might have to solve in order
+to build a car:</p>
+<ul>
+<li>How do you make the car acclerate?</li>
+<li>How do you make the car slow down?</li>
+<li>How do you steer the car?</li>
+</ul>
+<p>Each one of these problems is still very complex and could be broken down
+into smaller problems.</p>
+<p>The process of breaking a big problem down into smaller problems is called
+<strong>decomposition</strong> (you decompose a large/complex problem into smaller/simpler problems).</p>
+<p>After decomposing, you start building the parts to solve the smaller problems.
+For example, the car's breaking system would probably require you to design
+break pads that are used to slow the car down. A break pad is
+a <strong>component</strong> that is used to make a car.</p>
+<p>Once you've built a break pad component, you need to test it to make sure
+it will do it's job properly. You might run tests to make sure
+it will stand up to the force required to slow down a car
+(in the world of software development, this is called <strong>unit testing</strong>).</p>
+<p>When you are confident that your simplest components have been thoroughly
+tested and are working properly, then you start assembling them to
+make sure they work together (in software development this is known as
+<strong>integration</strong> testing). For example, you might run tests to make sure
+that the break pad and the disc/rotor work well with one another.
+When you integrate components, the result is sometimes referred to as a <strong>module</strong>
+(although the term 'module' is nebulus and can mean different things to different people in different contexts).</p>
+<p>Eventually, you'll end up with a breaking system that will be integrated
+into the car. The breaking system may depend on other systems in the
+car in order work, such as the hydraulic system (in software development,
+when a component or system depends on another component or system, then it
+is known as a <strong>dependency</strong>).</p>
+<p>Ideally, components are designed to be <strong>reusable</strong> so that a break pad, or
+even an entire breaking system, can be used in many types of cars.</p>
+<p>In summary, complex projects are executed by decomposing problems,
+building components, and integrating them into <strong>systems</strong>. Wikipedia defines
+a <strong>system</strong> as 'a group of interacting or interrelated elements that
+act according to a set of rules to form a unified whole'.
+It goes on to say that 'a system is surrounded and influenced by its
+environment'.</p>
+<p>As web developers, the applications that we develop are systems
+that run within and operating system (such as Windows or Linux).
+So the operating system is the environment that surrounds our systems.</p>
+<p>Well, that was a very high level overview of what we do as developers.
+Let's get back to the simplest parts, the components!</p>
+<h2>Component Based Design in Web Development</h2>
+<p>Software developers have adopted component based design in order to build
+complicated applications.
+There are some different approaches to building components in software development.
+For example you could write a class that can be used to instantiate components.
+You could also write a function that creates a component.
+In this activity, I'll show you examples of components that use both functions and classes.</p>
+<p>As web developers, we already have quite a few simple components
+that we can use to create more complicated ones.
+In HTML, a label element is a component, and so is a checkbox.
+You can think of any HTML element as a component that can used to 'compose' the parts of a page.</p>
+<p>For this activity, we will use a label and a checkbox to build a more complicated component.
+We'll call it a LabelCheckBox component.
+Then we'll do a simple test to try out the component.
+And finally, we'll reuse the component to help us solve a complicated problem, which is to figure out which vegetables the user likes.
+We'll create a function to define the component.</p>
+<p>Start by creating a folder named <strong>component-based-design</strong>, you can put all the files we create during this activity in this folder.</p>
+<p>Then create a page called <strong>component-based-design-with-functions.html</strong>, and put this code in it:</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+	&lt;meta charset=&quot;utf-8&quot;&gt;
+	&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+	&lt;title&gt;Component Based Design with Functions&lt;/title&gt;
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		// We'll put our JS code here
+	&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;div id=&quot;test-container&quot;&gt;&lt;/div&gt;
+	&lt;br&gt;&lt;br&gt;
+	&lt;h3&gt;Which veggies do you like?&lt;/h3&gt;
+	&lt;div id=&quot;veggie-container&quot;&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>Note that we'll be using the two DIV elements on this page
+as the 'containers' for our components.
+The first DIV will be used for a quick test of our LabelCheckBox component, and the second will be used to solve our big problem.
+When we create our component, we need to tell it where it must
+attach itself to the page. In other words, the component depends on the element
+that will contain it. To deal with this, the function will have a parameter
+called <strong>el</strong> as you'll see in a moment. When you pass in dependencies as parameters
+to a function component (or in the case of a class, when you pass in dependencies when calling a constructor),
+it is known as <strong>dependency injection</strong>.</p>
+<p>And now for the code that defines our component,
+place this function inside the SCRIPT element:</p>
+<pre><code class="language-js">function createLabelCheckBox(el, labelText, chkValue){
+
+	// Create the UI elements
+	const label = document.createElement(&quot;label&quot;);	
+	const checkBox = document.createElement(&quot;input&quot;);
+	checkBox.setAttribute(&quot;type&quot;, &quot;checkbox&quot;);	
+	const div = document.createElement(&quot;div&quot;);
+	div.append(checkBox, label);
+	el.append(div);
+
+	// Bind the data
+	label.innerHTML = labelText;
+	checkBox.value = chkValue;
+}
+</code></pre>
+<p>Hopefully you can understand every line of code in this function
+(if not, ask me for help).
+Keep in mind that the <strong>el</strong> parameter is the DOM element/object on the page will display the component.</p>
+<p>And now let's try it out by calling the function, and attaching the component to the test container.
+Put this code just after the <strong>createLabelCheckBox</strong> function:</p>
+<pre><code class="language-js">window.addEventListener(&quot;load&quot;, () =&gt; {
+	// TRY OUT THE COMPONENT
+	const testContainer = document.getElementById(&quot;test-container&quot;);
+	// The component depends on three things:
+	// 1. A container to know where to attach itself on the page
+	// 2. The text (data) to display in the label
+	// 3. The value (data) to bind to the checkbox
+	// We will 'inject' these dependencies into the component:
+	createLabelCheckBox(testContainer, &quot;Check if you like veggies&quot;, &quot;yes&quot;);
+
+
+});
+</code></pre>
+<p>Load the page in the browser and you should see the component!</p>
+<p>Before we move on, I'm going to jump ahead a bit and talk about a very
+important concept in software development and CBD, which is how do components
+send messages within the system. If something changes within one component, the system
+(or another component) may need to be aware of the change.
+For example, when the breaks are pressed in a car, the break lights should light up.</p>
+<p>In our case, we need to know when the checkbox is checked or unchecked by the user, so that it can update
+the underlying data. Luckily, JavaScript gives us a way to be notified when variouis
+changes occur, we can use the <strong>addEventListener()</strong> method.</p>
+<p>Add this code (inside the window load event handler):</p>
+<pre><code class="language-js">// the components should be able to notify the system when needed:
+testContainer.addEventListener(&quot;change&quot;, evt =&gt; {
+	alert(evt.target.value + &quot; = &quot; + evt.target.checked);
+}); 
+</code></pre>
+<p>Run the page, and change the checkbox.</p>
+<p>At this point, we might use another component to update a database
+so that it can store whether, or not, you like veggies.</p>
+<p>Now let's begin to solve our bigger problem, which is to determine exactly which veggies the user likes.
+Add this to the code inside the window load event handler:</p>
+<pre><code class="language-js">// REUSE THE COMPONENT
+// The problem is to figure out which veggies a user likes.
+
+// This will be the data that we use to generate instances of our component
+// and keep track of the user preferences
+const veggies = [
+	{id:1, name:&quot;Brocoli&quot;, liked:null},
+	{id:2, name:&quot;Carrots&quot;, liked:null},
+	{id:3, name:&quot;Peas&quot;, liked:null}
+];
+
+const veggieContainer = document.getElementById(&quot;veggie-container&quot;);
+// Create a LabelCheckBox for each object in the veggies array:
+veggies.forEach( veggieObj =&gt; createLabelCheckBox(veggieContainer, veggieObj.name, veggieObj.id));
+</code></pre>
+<p>If you load the page, you should see an instance of our component for each object in the veggies array.</p>
+<p>Now we need to be notified when a checkbox is changed, so that we can update
+the data.</p>
+<p>Add this code (make sure to put it inside the window load handler):</p>
+<pre><code class="language-js">// Listen for change events
+veggieContainer.addEventListener(&quot;change&quot;, evt =&gt; {
+
+	const veggieId = evt.target.value;
+	const vegObj = veggies.find(v =&gt; v.id == veggieId);
+	// bind the data based on the state of the checkbox
+	vegObj.liked = evt.target.checked;
+
+	if(vegObj.liked){
+		alert(&quot;Glad you like &quot; + vegObj.name);
+	}else{
+		alert(&quot;Sorry you don't like &quot; + vegObj.name);
+	}
+
+	console.log(&quot;Here is the current state of your veggie data:&quot;, veggies);
+});
+</code></pre>
+<p>Make sure you understand this code. If not, then maybe try stepping through it with the
+debugger. If you don't remember how to use the debugger, please ask me for a demo.</p>
+<p>Our data is now updated whenever a checkbox is changed.
+We are not 'persisting' the data by storing it in a database, or a file yet,
+but we'll be getting into that later.</p>
+<p>If you want to see what our code might look like if we used a class to define
+our component (rather than a function), I've put the code at the bottom of this page.</p>
+<h2>Component Based Design and JavaScript Frameworks</h2>
+<p>There are many JavaScript frameworks that are centered around component based design (React, Vue, Angular, etc.).
+As you know, web applications often need to work with data (we have been working with 'veggie' data)
+One of the main advantages to using a framework is that they take care of most of the data binding code,
+which can become messy and cumbersome.
+Frameworks such as Vue and React will automatically update the UI when the data changes, and
+will update the data when the UI changes (remember that data-binding is bi-directional).
+In our Veggie app, a good amount of of the code was centered around binding the data when the page loads,
+and updating the data when the user changes a checkbox.</p>
+<p>Many CBD frameworks also allow you to define components and then incorporate them into a web page as if they
+were HTML elements. For example, if we were to define a component named LabelCheckBox in the Vue framework,
+then we might add the component to a page by using code that looks something like this:</p>
+<pre><code class="language-html">&lt;labelCheckbox labelText=&quot;Peas&quot; chkValue=&quot;1&quot; onchange=&quot;doSomething()&quot; /&gt;
+</code></pre>
+<p>Notice how the data that the component depends on (the dependencies) are passed in as attributes of labelCheckbox element.
+We'll see quite a bit of code that looks a little bit like this when we start working with the VueJS framework.</p>
+<h2>A Class Based Component</h2>
+<p>Our code might look like this if we used a class rather than a function
+to create the LabelCheckBox component, create a file named <strong>component-based-design-with-classes.html</strong>
+and paste this code into it:</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+	&lt;meta charset=&quot;utf-8&quot;&gt;
+	&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+	&lt;title&gt;Component Based Design with Classes&lt;/title&gt;
+	&lt;script type=&quot;text/javascript&quot;&gt;
+
+	class LabelCheckBox{
+
+		// PRIVATE INSTANCE VARIABLES
+		#el; 		// the element that will contain this component (the 'container element')
+		#label;		// the label element that is used in this component
+		#checkBox;	// the checkbox that is used in this component
+		#labelText	// the data that will be bound to the label element
+		#chkValue	// the value that will be bound to the checkbox
+		#div;		// the label and checkbox will be put inside this div
+		
+		// The constructor is used to set up the instance variables
+		// (the dependencies should be passed into the constructor, this is 'dependency injection')
+		constructor(el, labelText, chkValue){
+			this.#el = el;
+			this.#labelText = labelText;
+			this.#chkValue = chkValue;
+			this.#label = document.createElement(&quot;label&quot;);	
+			this.#checkBox = document.createElement(&quot;input&quot;);
+			this.#checkBox.setAttribute(&quot;type&quot;, &quot;checkbox&quot;);
+			this.#div = document.createElement(&quot;div&quot;);
+
+			this.render();
+		}
+
+		// The render method displays the UI,
+		// and binds the data
+		render(){
+					
+			this.#div.append(
+				this.#checkBox,
+				this.#label
+			)
+
+			this.#el.append(this.#div);
+			
+			// bind the data
+			this.#label.append(this.#labelText);
+			this.#checkBox.value = this.#chkValue;
+		}
+	}
+
+
+	window.addEventListener(&quot;load&quot;, () =&gt; {
+
+		// TRY OUT THE COMPONENT
+		const testContainer = document.getElementById(&quot;test-container&quot;);
+		// The component depends on three things:
+		// 1. A container to know where to attach itself on the page
+		// 2. The text (data) to display in the label
+		// 3. The value (data) to bind to the checkbox
+		// We will 'inject' these dependencies into the component:
+		const lblChk1 = new LabelCheckBox(testContainer, &quot;Check if you like veggies&quot;, &quot;yes&quot;);
+
+		// the components should be able to notify the system when needed:
+		testContainer.addEventListener(&quot;change&quot;, evt =&gt; {
+			console.log(evt.target.value, evt.target.checked);
+		})
+		
+		
+		// REUSE THE COMPONENT
+		// The problem is to figure out which veggies a user likes.
+		const veggieContainer = document.getElementById(&quot;veggie-container&quot;);
+		
+		const veggies = [
+			{id:1, name:&quot;Brocoli&quot;, liked:null},
+			{id:2, name:&quot;Carrots&quot;, liked:null},
+			{id:3, name:&quot;Peas&quot;, liked:null}
+		];
+
+		// Instantiate the component for each object in the veggies array
+		veggies.forEach( vObj =&gt; new LabelCheckBox(veggieContainer, vObj.name, vObj.id));
+		
+
+		veggieContainer.addEventListener(&quot;change&quot;, evt =&gt; {
+
+			const veggieId = evt.target.value;
+			const vegObj = veggies.find(v =&gt; v.id == veggieId);
+			// bind the data based on the state of the checkbox
+			vegObj.liked = evt.target.checked; 
+
+			if(vegObj.liked){
+				alert(&quot;Glad you like &quot; + vegObj.name);
+			}else{
+				alert(&quot;Sorry you don't like &quot; + vegObj.name);
+			}
+
+			console.log(&quot;Here is the current state of your veggie data:&quot;, veggies);
+		})
+
+	});
+	
+	&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;div id=&quot;test-container&quot;&gt;&lt;/div&gt;
+	&lt;br&gt;&lt;br&gt;
+	&lt;h3&gt;Which veggies do you like?&lt;/h3&gt;
+	&lt;div id=&quot;veggie-container&quot;&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+
+        </main>
+        <!--
+        <aside>
+        Side Bar
+        </aside>
+        -->
+    </div><!--end of #content div-->
+    <footer>&copy; 2023 Niall Kader</footer>
+</body>
+</html>
