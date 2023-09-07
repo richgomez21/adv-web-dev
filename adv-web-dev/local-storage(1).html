@@ -50,7 +50,9 @@
 
 		// STEP 1 - Putting Data into the localStorage database
 		// Let's go ahead create a key/value database like the one in the diagram
-		
+		// localStorage.setItem("firstName", "Bob");
+		// localStorage.setItem("lastName", "Smith");
+		// localStorage.setItem("age", 7);
 
 
 
@@ -66,12 +68,19 @@
 
 		// STEP 2 - Retrieving Data from localStorage
 		// Let's retreive all the key/value pairs from the database
-		
+		for(let i = 0; i < localStorage.length; i++){
+			const keyStr = localStorage.key(i);
+			console.log(keyStr);
+			const valueStr = localStorage.getItem(keyStr);
+			console.log(valueStr);
+		}
 
 
 
 		// Step 3 -  Clearing localStorage
-
+		document.getElementById("btnClearStorage").addEventListener("click", ()=>{
+			
+		})
 
 		
 		// Limitations of Local Storage:
