@@ -24,3 +24,49 @@ INSERT INTO users (user_first_name,user_last_name, user_email, user_password, us
 ('John', 'Doe','john@doe.com', 'opensesame', 'xxx', '1', true),
 ('Jane', 'Anderson','jane@doe.com', 'letmein', 'xxx', '2', true),
 ('Bob', 'Smith','bob@smith.com', 'test', 'xxx', '2', false);
+
+CREATE TABLE artists (
+  'artist_id' int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  'artist_stage_name' varchar(30) NOT NULL,
+  'artist_first_name' varchar(30) NOT NULL,
+  'artist_last_name' varchar(30) NOT NULL,
+  'artist_genre' varchar(100) NOT NULL UNIQUE,
+);
+
+INSERT INTO artists (artist_id, artist_stage_name, artist_first_name, artist_last_name, artist_genre) VALUES 
+(1, 'Big Scarr', 'Alexander', 'Woods', 'Trap Rap'),
+(2, 'A$AP ROCKY', 'Rakim', 'Mayers', 'Rap'),
+(3, 'Ye', 'Kanye', 'West', 'Rap');
+
+CREATE TABLE albums (
+  'album_id' int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  'artist_id' int,
+  'album_name' varchar(30) NOT NULL,
+   FOREIGN KEY (artist_id) REFERENCES artists(artist_id)
+);
+
+INSERT INTO albums (album_id, artist_id, album_name) VALUES 
+(1, 1, 'Grim Reaper'),
+(2, 2, 'TESTING'),
+(3, 3, "808's and heartbreak's");
+
+CREATE TABLE tracks (
+  'track_id' int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  'album_id' int,
+  'track_name' varchar(30) NOT NULL,
+  FOREIGN KEY (Album_ID) REFERENCES Albums(Album_ID)
+);
+
+INSERT INTO tracks (track_id, album_id, track_name) VALUES 
+(1, 1, 'Studio Session'),
+(2, 2, 'OG Beeper'),
+(3, 3, 'Heartless');
+
+
+
+
+
+
+
+
+
