@@ -90,7 +90,19 @@
 
 			// POST Requests (for inserting/creating data on the server)
 			url = 'http://localhost:3000/users';
-			
+			const user = {
+				first_name: "Tom",
+				last_name: "Smith",
+				email: "asdf@sdaf.com"
+			}
+
+			axios.post(url,user)
+			.then(resp=>{
+				console.log(resp);
+			})
+			.catch(err=>{
+				console.log(err);
+			})
 
 			// If you look in the Network tab, you'll see that 
 			// this code actually triggered two request (the first is called a pre-flight check to see if the server allows POSTS)
@@ -101,13 +113,29 @@
 			// PUT Requests (for updating data on the server)
 			// Note that the ID of the user to update is in the URL
 			url = 'http://localhost:3000/users/6/';
-			
+			const fred = {
+				name: "FR3D"
+			};
+
+			axios.put(url, fred)
+			.then(resp=>{
+				console.log(resp);
+			})
+			.catch(err=>{
+				console.log(err);
+			})
 
 
 
 			// DELETE Requests (for deleting data on the server)
-			url = 'http://localhost:3000/users/7/';
-			
+			url = 'http://localhost:3000/users/14/';
+			axios.delete(url)
+			.then(resp=>{
+				console.log(resp);
+			})
+			.catch(err=>{
+				console.log(err);
+			})
 
 
 			
@@ -121,7 +149,14 @@
 			// Note that by setting the Accept header in the request, you are telling the server that you want the data formatted as XML
 			// But JSON server ignores this, and sends the data in JSON
 			// A robust API will return it's data in various formats
-
+			axios.get(url, options)
+			.then(resp=>{
+				console.log(resp);
+			})
+			.catch(err=>{
+				console.log(err);
+			})
+			
 			
 
 	  		// Make sure to look at the request in the Network tab of the dev tools
@@ -130,7 +165,6 @@
 
 			// Getting Response Headers
 			url = 'http://localhost:3000/users';
-
 			
 
 			
@@ -143,7 +177,7 @@
 			  headers: {'X-Custom-Header': 'foobar'}
 			});
            	// Now you don't have to specify the full URL in each request
-
+			instance.get("/users")
 
 
 
