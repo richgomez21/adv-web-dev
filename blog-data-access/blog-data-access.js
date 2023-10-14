@@ -15,4 +15,4 @@ export function getPostById(id){
 function errorHandler(err){
     console.log("ERROR (in blog-data-access):", err.message);
     throw new Error(err); // because we throw an error here, we can catch it in our components.
-}
+} 
