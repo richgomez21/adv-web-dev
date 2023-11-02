@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optional Chaining Operator</title>
+    <script>
+
+        const house = {
+            kitchen:{
+                sink:{
+                    type: "procelain"
+                }
+            }
+
+        };
+
+        console.log(house.kitchen.sink.type);
+        console.log(house["kitchen"]["sink"]["type"]);
+        
+        const colors = ["red", "blue", "yellow"];
+        // console.log(colors[0]);
+
+        console.log(house.bathroom?.sink); //if bathroom is defined, return sink; if not defined, return undefined. 
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
