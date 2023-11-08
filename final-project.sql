@@ -20,7 +20,7 @@ CREATE TABLE users (
   FOREIGN KEY ('user_role') REFERENCES 'user_roles'('user_role_id')
 );
 
-INSERT INTO 'users' ('user_first_name', 'user_last_name, user_email', 'user_password', 'user_salt', 'user_role', 'user_active') VALUES 
+INSERT INTO 'users' ('user_first_name', 'user_last_name', 'user_email', 'user_password', 'user_salt', 'user_role', 'user_active') VALUES 
 ('John', 'Doe','john@doe.com', 'opensesame', 'xxx', '1', true),
 ('Jane', 'Anderson','jane@doe.com', 'letmein', 'xxx', '2', true),
 ('Bob', 'Smith','bob@smith.com', 'test', 'xxx', '2', false);
