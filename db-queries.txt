@@ -1,0 +1,101 @@
+#####################################
+## Get All Artists
+#####################################
+SELECT 
+	artist_id, 
+    artist_stage_name
+	artist_first_name, 
+	artist_last_name, 
+    artist_genre
+FROM Albums;
+
+
+#####################################
+## Get Artist By ID
+#####################################
+SELECT 
+	artist_id, 
+    artist_stage_name
+	artist_first_name, 
+	artist_last_name, 
+    artist_genre
+FROM Albums
+WHERE artist_id = 1;
+
+#####################################
+## Insert Artist
+#####################################
+
+
+INSERT INTO Albums (
+	artist_id, 
+    artist_stage_name
+	artist_first_name, 
+	artist_last_name, 
+    artist_genre
+) VALUES (
+	'102',
+	'Quezz Ruthless',
+	'Quezz',
+	'Smith',
+	'Trap/Rap'
+)
+
+#####################################
+## Update Artist
+#####################################
+
+UPDATE Albums SET
+	artist_id, 
+    artist_stage_name
+	artist_first_name, 
+	artist_last_name, 
+    artist_genre
+WHERE user_id = 4
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+#####################################
+## Get All Albums
+#####################################
+SELECT 
+	album_id, 
+    artist_id,
+    album_name
+FROM Albums;
+
+#####################################
+## Get Album By ID
+#####################################
+SELECT 
+	album_id, 
+    artist_id,
+    album_name
+FROM Albums
+WHERE artist_id = 1;
+
+
+#####################################
+## Insert Album
+#####################################
+
+
+INSERT INTO Albums (
+	album_id, 
+    artist_id,
+    album_name
+) VALUES (
+	'24',
+	'32',
+    'COMEBACK'
+)
+
+#####################################
+## Update Album
+#####################################
+
+UPDATE Albums SET
+	album_id, 
+    artist_id,
+    album_name
+WHERE album_id = 4
