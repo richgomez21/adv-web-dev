@@ -1,7 +1,7 @@
-CREATE TABLE `user_roles` (
-  `user_role_id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  `user_role_name` varchar(30) NOT NULL,
-  `user_role_desc` varchar(200) NOT NULL
+CREATE TABLE user_roles (
+  'user_role_id' int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  'user_role_name' varchar(30) NOT NULL,
+  'user_role_desc' varchar(200) NOT NULL
 );
 
 INSERT INTO `user_roles` (`user_role_id`, `user_role_name`, `user_role_desc`) VALUES
@@ -21,7 +21,7 @@ CREATE TABLE users (
 );
 
 INSERT INTO 'users' ('user_first_name', 'user_last_name', 'user_email', 'user_password', 'user_salt', 'user_role', 'user_active') VALUES 
-('John', 'Doe','john@doe.com', 'opensesame', 'xxx', '1', true),
+('John', 'Doe','john@doe.com', 'opensesame', 'xxx', '1', ''true''),
 ('Jane', 'Anderson','jane@doe.com', 'letmein', 'xxx', '2', true),
 ('Bob', 'Smith','bob@smith.com', 'test', 'xxx', '2', false);
 
