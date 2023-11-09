@@ -36,7 +36,7 @@ CREATE TABLE artists (
 INSERT INTO `artists` (`artist_id`, `artist_stage_name`, `artist_first_name`, `artist_last_name`, `artist_genre`) VALUES 
 (1, 'Big Scarr', 'Alexander', 'Woods', 'Trap Rap'),
 (2, 'A$AP ROCKY', 'Rakim', 'Mayers', 'Rap'),
-(3, 'Ye', 'Kanye', 'West', 'Rap');
+(3, 'Ye', 'Kanye', 'West', 'Rap Soul');
 
 CREATE TABLE albums (
   `album_id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
