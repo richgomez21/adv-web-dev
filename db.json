@@ -1,0 +1,83 @@
+{
+    "users": [
+      {
+        "id": 1,
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "john@doe.com",
+        "password": "opensesame",
+        "role": 1,
+        "active": "true"
+      },
+      {
+        "id": 2,
+        "firstName": "Jane",
+        "lastName": "Anderson",
+        "email": "jane@doe.com",
+        "password": "letmein",
+        "role": 2,
+        "active": "true"
+      },
+      {
+        "id": 3,
+        "firstName": "Bob",
+        "lastName": "Smith",
+        "email": "bob@smith.com",
+        "password": "test",
+        "role": 2,
+        "active": "false"
+      }
+    ],
+    "userRoles": [
+      {
+        "id": 1,
+        "roleName": "Standard User",
+        "roleDesc": "Normal user with no special permissions"
+      },
+      {
+        "id": 2,
+        "roleName": "Admin",
+        "roleDesc": "Extra permissions"
+      }
+    ],
+    "artists": [
+        {
+          "id": 1,
+          "stageName": "Big Scarr",
+          "firstName": "Alexander",
+          "lastName": "Woods",
+          "genre": "Trap Rap"
+        },
+        {
+            "id": 2,
+            "stageName": "A$AP ROCKY",
+            "firstName": "Rakim",
+            "lastName": "Mayers",
+            "genre": "Rap"
+          },
+          {
+            "id": 3,
+            "stageName": "Ye",
+            "firstName": "Kanye",
+            "lastName": "West",
+            "genre": "Rap Soul"
+          }
+      ],
+      "albums": [
+        {
+          "id": 1,
+          "artistId": 1,
+          "name": "Grim Reaper"
+        },
+        {
+            "id": 2,
+            "artistId": 2,
+            "name": "TESTING"
+          },
+          {
+            "id": 3,
+            "artistId": 3,
+            "name": "808's and heartbreak's"
+          }
+      ]
+  }
